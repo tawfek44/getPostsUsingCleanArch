@@ -3,6 +3,7 @@ import 'package:task/core/error/exceptions.dart';
 import 'package:task/core/network/network_state.dart';
 import 'package:task/features/posts/data/datasources/post_local_data_source.dart';
 import 'package:task/features/posts/data/datasources/post_remote_data_source.dart';
+import 'package:task/features/posts/data/models/post_model.dart';
 import 'package:task/features/posts/domain/entities/post.dart';
 import 'package:task/features/posts/domain/repositories/get_posts_repository.dart';
 
@@ -19,7 +20,7 @@ class PostRepositoryImpl implements PostRepository {
       required this.networkInfo});
 
   @override
-  Future<Either<Failure, Post>> getPosts() async {
+  Future<Either<Failure, PostModel>> getPosts() async {
     if (await networkInfo.isConnected) {
       try {
         final posts = await postRemoteDataSource.getPosts();

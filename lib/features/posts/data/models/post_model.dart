@@ -6,4 +6,8 @@ class PostModel extends Post {
   factory PostModel.fromJson(Map<String, dynamic> json) {
     return PostModel(posts: json['posts']);
   }
+
+  Map<String, dynamic> toJson() {
+    return {'posts': posts};
+  }
 }
